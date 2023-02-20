@@ -1,12 +1,12 @@
 {
-  "name": "json5-to-table",
-  "version": "0.1.8",
-  "description": "JSON 数据转化为表格的工具，支持深层嵌套数据，支持模式定义",
+  "name": "@alexdee2007/json5-to-table",
+  "version": "0.2.0",
+  "description": "A tool for converting JSON data into tables, supports deep nested data, and supports schema definition",
   "main": "dist/bundle.js",
   "bin": {
     "json5-to-table": "./bin/json5-to-table"
   },
-  "repository": "https://github.com/yetrun/json5-to-table",
+  "repository": "https://github.com/alexdee2007/json5-to-table",
   "author": "hi@yet.run",
   "license": "Apache-2.0",
   "scripts": {
@@ -41,8 +41,7 @@
     "ava": "^3.15.0",
     "babel-loader": "^8.2.2",
     "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0",
-    "xlsx": "^0.17.1"
+    "webpack-cli": "^4.8.0"
   },
   "dependencies": {
     "json5": "^2.2.0",

@@ -1,20 +1,20 @@
-# fillSchema 函数
+# fillSchema function
 
-## 函数定义
+## Function definition
 
 ```javascript
 function fillSchema(schemaObject, matrixView)
 ```
 
-该函数把 `schemaObject` 规定的模式**充满**到 `matrixView` 中去。`schemaObject` 是以下类型的对象或对象数组：
+This function **fills** the schema specified by the `schemaObject` into the `matrixView`. `schemaObject` is an object or array of objects of the following types:
 
 - `{ title: 'A', path: 'a' }`
 - `{ title: 'A', path: 'nested.a' }`
 - `{ title: 'Nested', path: 'nested', props: [ ... ] }`
 
-## 填充策略
+## Padding strategy
 
-填充时采用保证用尽，尽量均分的策略。例如，现有 schema 对象为 `{ title: 'A', props: [ { title: 'B', title: 'C' } ] }`，它想要占满三行，则占用情况为：
+When filling, adopt the strategy of ensuring exhaustion and sharing as much as possible. For example, the existing schema object is `{ title: 'A', props: [ { title: 'B', title: 'C' } ] }`, and it wants to occupy three lines, then the occupancy is as follows:
 
-- `A`：占两行
-- `B`、`C`：占一行
+- `A`: occupies two lines
+- `B`, `C`: Occupy a line

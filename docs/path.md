@@ -1,15 +1,15 @@
-# 关于 path 提取属性值的规律总结
+# Summary of the rules for extracting attribute values from path
 
-## 数据
+## data
 
-数据分三类，Object、Array、Nil. 其中基本数据类型如 Number、String 属于 Object，Null 和 Undefined 都属于 Nil.
+There are three types of data, Object, Array, and Nil. Among them, basic data types such as Number and String belong to Object, and Null and Undefined belong to Nil.
 
-在提取属性时，遇到对象则从对象中提取，遇到数组则从数组中元素提取。如果遇到 Null 或 Undefined，则提前终止提取，返回 undefined. 本库不区分 Object 和 Array，总把 Object 当作只含一个元素的数组对待。
+When extracting attributes, when an object is encountered, it is extracted from the object, and when an array is encountered, elements are extracted from the array. If Null or Undefined is encountered, the extraction is terminated early and undefined is returned. This library does not distinguish between Object and Array, and always treats Object as an array containing only one element.
 
 ## path
 
-当从 object 生成表格时，path 规律如下：
+When generating a table from an object, the path rules are as follows:
 
-- `''`: 空白 path 值提取完整对象 `object`；
-- `'a'`：提取对象的属性 `object.a`；
-- `'a.b.c'`：深层次递归提取对象的属性 `object.a.b.c`，能很好地处理数组。
+- `''`: an empty path value extracts the full object `object`;
+- `'a'`: Extract the object's attribute `object.a`;
+- `'a.b.c'`: deep recursive extraction of object properties `object.a.b.c`, which can handle arrays well.

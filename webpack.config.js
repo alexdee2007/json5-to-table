@@ -1,32 +1,36 @@
-const path = require('path')
+const path = require("path");
 
 module.exports = {
-  mode: 'production',
-  entry: './lib/index.js',
+  mode: "production",
+  entry: "./lib/index.js",
+  optimization: {
+    minimize: true
+  },
+  devtool: false,
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    library:{  
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    library: {
       name: "JSON5_TO_TABLE",
       type: "umd"
     },
-    globalObject: 'this'
+    globalObject: "this"
   },
   externals: {
     xlsx: {
-      commonjs: 'xlsx',
-      commonjs2: 'xlsx',
-      amd: 'xlsx',
-      root: 'XLSX'
+      commonjs: "xlsx",
+      commonjs2: "xlsx",
+      amd: "xlsx",
+      root: "XLSX"
     }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/
       }
     ]
   }
-}
+};

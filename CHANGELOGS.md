@@ -1,13 +1,13 @@
-# CHANGE LOGS
+#CHANGE LOGS
 
-## 版本 0.1.8
+## Version 0.1.8
 
-1. 调整 fillData 实现机制
+1. Adjust the implementation mechanism of fillData
 
-    本次主要是为了修复 ISSUE 30，并且为了不重复计算 data 占用空间，调整了 fillData 的实现机制。先将其转化为中间格式，再将其填充到数组中。其中中间格式包括 Table、Row、Cell.
+   This time, it is mainly to fix ISSUE 30, and adjust the implementation mechanism of fillData in order not to double-calculate the space occupied by data. Convert it to an intermediate format before filling it into an array. The intermediate formats include Table, Row, Cell.
 
-    为了兼容 Table、Row、Cell 的格式输出，fillData 对空数组的填充机制调整为与空对象一致。
+   In order to be compatible with the format output of Table, Row, and Cell, fillData's filling mechanism for empty arrays is adjusted to be consistent with empty objects.
 
-2. 打包格式调整为 ES5
+2. Adjust the packaging format to ES5
 
-3. 重新设计缺席引入 XLSX 的报错方案
+3. Redesign the error reporting scheme for absent introduction of XLSX

@@ -1,24 +1,24 @@
-const test = require('ava')
-const generateTable = require('../lib/generateTable')
+const test = require("ava");
+const generateTable = require("../lib/generateTable");
 
-test('generate table for simple object array', t => {
+test("generate table for simple object array", (t) => {
   const schema = [
-    { title: 'A', path: 'a' },
-    { title: 'B', path: 'b' },
-    { title: 'C', path: 'c' }
-  ]
+    { title: "A", path: "a" },
+    { title: "B", path: "b" },
+    { title: "C", path: "c" }
+  ];
   const data = [
     { a: 1, b: 2, c: 3 },
     { a: 4, b: 5, c: 6 }
-  ]
+  ];
 
-  const table = generateTable(data, schema)
+  const table = generateTable(data, schema);
   t.deepEqual(table, {
     header: [
       [
-        { row: 1, col: 1, rowSpan: 1, colSpan: 1, val: 'A' },
-        { row: 1, col: 2, rowSpan: 1, colSpan: 1, val: 'B' },
-        { row: 1, col: 3, rowSpan: 1, colSpan: 1, val: 'C' }
+        { row: 1, col: 1, rowSpan: 1, colSpan: 1, val: "A" },
+        { row: 1, col: 2, rowSpan: 1, colSpan: 1, val: "B" },
+        { row: 1, col: 3, rowSpan: 1, colSpan: 1, val: "C" }
       ]
     ],
     body: [
@@ -33,11 +33,10 @@ test('generate table for simple object array', t => {
         { row: 3, col: 3, rowSpan: 1, colSpan: 1, val: 6 }
       ]
     ]
-  })
-})
+  });
+});
 
-// 这里主要消除计算空数组的 dataSize 带来的异常
-test('schema is nested but data is a empty array', t => {
+test("schema is nested but data is a empty array", (t) => {
   const schema = [
     {
       title: "a",
@@ -57,10 +56,10 @@ test('schema is nested but data is a empty array', t => {
         }
       ]
     }
-  ]
-  const data =  { 'a': 1, 'b': [] } 
+  ];
+  const data = { a: 1, b: [] };
 
-  const table = generateTable(data, schema)
+  const table = generateTable(data, schema);
   t.deepEqual(table.body, [
     [
       {
@@ -83,19 +82,23 @@ test('schema is nested but data is a empty array', t => {
         rowSpan: 1,
         colSpan: 1,
         val: undefined
-      },
+      }
     ]
-  ])
-})
+  ]);
+});
 
-test('generate table for complex object array', t => {
+test("generate table for complex object array", (t) => {
   const schema = [
-    { title: 'A', path: 'a' },
-    { title: 'B', path: 'b', props: [
-      { title: 'C', path: 'c' },
-      { title: 'D', path: 'd' }
-    ] }
-  ]
+    { title: "A", path: "a" },
+    {
+      title: "B",
+      path: "b",
+      props: [
+        { title: "C", path: "c" },
+        { title: "D", path: "d" }
+      ]
+    }
+  ];
   const data = [
     {
       a: 1,
@@ -106,24 +109,22 @@ test('generate table for complex object array', t => {
     },
     {
       a: 6,
-      b: [
-        { c: 7, d: 8 }
-      ]
+      b: [{ c: 7, d: 8 }]
     }
-  ]
+  ];
 
-  const table = generateTable(data, schema)
+  const table = generateTable(data, schema);
   t.deepEqual(table, {
     header: [
       [
-        { row: 1, col: 1, rowSpan: 2, colSpan: 1, val: 'A' },
-        { row: 1, col: 2, rowSpan: 1, colSpan: 2, val: 'B' },
+        { row: 1, col: 1, rowSpan: 2, colSpan: 1, val: "A" },
+        { row: 1, col: 2, rowSpan: 1, colSpan: 2, val: "B" },
         undefined
       ],
       [
         undefined,
-        { row: 2, col: 2, rowSpan: 1, colSpan: 1, val: 'C' },
-        { row: 2, col: 3, rowSpan: 1, colSpan: 1, val: 'D' }
+        { row: 2, col: 2, rowSpan: 1, colSpan: 1, val: "C" },
+        { row: 2, col: 3, rowSpan: 1, colSpan: 1, val: "D" }
       ]
     ],
     body: [
@@ -140,37 +141,37 @@ test('generate table for complex object array', t => {
       [
         { row: 5, col: 1, rowSpan: 1, colSpan: 1, val: 6 },
         { row: 5, col: 2, rowSpan: 1, colSpan: 1, val: 7 },
-        { row: 5, col: 3, rowSpan: 1, colSpan: 1, val: 8 },
+        { row: 5, col: 3, rowSpan: 1, colSpan: 1, val: 8 }
       ]
     ]
-  })
-})
+  });
+});
 
-test('no given schema', t => {
+test("no given schema", (t) => {
   const data = [
     { a: 1, b: { c: 2, d: 3 } },
     { a: 4, b: { c: 5, d: 6 } }
-  ]
+  ];
 
-  const table = generateTable(data)
-  t.notDeepEqual(table, generateTable(data, null, { parseDataToSchema: 'flatten' }))
-  t.deepEqual(table, generateTable(data, null, { parseDataToSchema: 'stack' }))
-})
+  const table = generateTable(data);
+  t.notDeepEqual(table, generateTable(data, null, { parseDataToSchema: "flatten" }));
+  t.deepEqual(table, generateTable(data, null, { parseDataToSchema: "stack" }));
+});
 
-test('normalize schema', t => {
-  const schema = [ 'a', 'b', 'c' ]
+test("normalize schema", (t) => {
+  const schema = ["a", "b", "c"];
   const data = [
     { a: 1, b: 2, c: 3 },
     { a: 4, b: 5, c: 6 }
-  ]
+  ];
 
-  const table = generateTable(data, schema)
+  const table = generateTable(data, schema);
   t.deepEqual(table, {
     header: [
       [
-        { row: 1, col: 1, rowSpan: 1, colSpan: 1, val: 'a' },
-        { row: 1, col: 2, rowSpan: 1, colSpan: 1, val: 'b' },
-        { row: 1, col: 3, rowSpan: 1, colSpan: 1, val: 'c' }
+        { row: 1, col: 1, rowSpan: 1, colSpan: 1, val: "a" },
+        { row: 1, col: 2, rowSpan: 1, colSpan: 1, val: "b" },
+        { row: 1, col: 3, rowSpan: 1, colSpan: 1, val: "c" }
       ]
     ],
     body: [
@@ -185,5 +186,5 @@ test('normalize schema', t => {
         { row: 3, col: 3, rowSpan: 1, colSpan: 1, val: 6 }
       ]
     ]
-  })
-})
+  });
+});
