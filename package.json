@@ -24,7 +24,8 @@
     "README.md",
     "LICENSE",
     "bin",
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "keywords": [
     "nested",
