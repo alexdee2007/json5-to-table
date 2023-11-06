@@ -11,9 +11,9 @@ declare module "@alexdee2007/json5-to-table" {
       table?: HTMLTableElement;
       thead?: HTMLTableSectionElement;
       tbody?: HTMLTableSectionElement;
-      tr?: HTMLTableSectionElement;
-      "thead.tr"?: HTMLTableSectionElement;
-      "tbody.tr"?: HTMLTableSectionElement;
+      tr?: HTMLTableRowElement;
+      "thead.tr"?: HTMLTableRowElement;
+      "tbody.tr"?: HTMLTableRowElement;
       th?: HTMLTableCellElement;
       td?: HTMLTableCellElement;
     };
