@@ -1,6 +1,6 @@
 {
   "name": "@alexdee2007/json5-to-table",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A tool for converting JSON data into tables, supports deep nested data, and supports schema definition",
   "main": "dist/bundle.js",
   "bin": {
