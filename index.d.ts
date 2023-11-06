@@ -1,4 +1,4 @@
-declare module '@alexdee2007/json5-to-table' {
+declare module "@alexdee2007/json5-to-table" {
   export interface ISchema {
     title: string;
     path: string;
@@ -6,17 +6,18 @@ declare module '@alexdee2007/json5-to-table' {
   }
 
   export interface IOptions {
-    parseSchemaToData?: 'stack' | 'flatten';
+    parseSchemaToData?: "stack" | "flatten";
     attributes?: {
-      table?: import('vue').TableHTMLAttributes;
-      thead?: import('vue').HTMLAttributes;
-      tbody?: import('vue').HTMLAttributes;
-      tr?: import('vue').HTMLAttributes;
-      'thead.tr'?: import('vue').HTMLAttributes;
-      'tbody.tr'?: import('vue').HTMLAttributes;
-      th?: import('vue').HTMLAttributes;
-      td?: import('vue').HTMLAttributes;
+      table?: HTMLTableElement;
+      thead?: HTMLTableSectionElement;
+      tbody?: HTMLTableSectionElement;
+      tr?: HTMLTableSectionElement;
+      "thead.tr"?: HTMLTableSectionElement;
+      "tbody.tr"?: HTMLTableSectionElement;
+      th?: HTMLTableCellElement;
+      td?: HTMLTableCellElement;
     };
+    HTMLTableCellElement;
   }
 
   export function generateHTMLTable(data: Array<Record<string, unknown>>, schema: ISchema[], options: IOptions): string;
