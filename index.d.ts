@@ -8,14 +8,14 @@ declare module "@alexdee2007/json5-to-table" {
   export interface IOptions {
     parseSchemaToData?: "stack" | "flatten";
     attributes?: {
-      table?: HTMLTableElement & Record<string, unknown>;
-      thead?: HTMLTableSectionElement & Record<string, unknown>;
-      tbody?: HTMLTableSectionElement & Record<string, unknown>;
-      tr?: HTMLTableRowElement & Record<string, unknown>;
-      "thead.tr"?: HTMLTableRowElement & Record<string, unknown>;
-      "tbody.tr"?: HTMLTableRowElement & Record<string, unknown>;
-      th?: HTMLTableCellElement & Record<string, unknown>;
-      td?: HTMLTableCellElement & Record<string, unknown>;
+      table?: Partial<HTMLTableElement> & Record<string, unknown>;
+      thead?: Partial<HTMLTableSectionElement> & Record<string, unknown>;
+      tbody?: Partial<HTMLTableSectionElement> & Record<string, unknown>;
+      tr?: Partial<HTMLTableRowElement> & Record<string, unknown>;
+      "thead.tr"?: Partial<HTMLTableRowElement> & Record<string, unknown>;
+      "tbody.tr"?: Partial<HTMLTableRowElement> & Record<string, unknown>;
+      th?: Partial<HTMLTableCellElement> & Record<string, unknown>;
+      td?: Partial<HTMLTableCellElement> & Record<string, unknown>;
     };
   }
 
