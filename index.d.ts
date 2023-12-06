@@ -17,7 +17,6 @@ declare module "@alexdee2007/json5-to-table" {
       th?: HTMLTableCellElement;
       td?: HTMLTableCellElement;
     };
-    HTMLTableCellElement;
   }
 
   export function generateHTMLTable(data: Array<Record<string, unknown>>, schema: ISchema[], options: IOptions): string;
